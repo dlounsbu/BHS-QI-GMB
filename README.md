@@ -21,5 +21,5 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> the BHS Partner
 
 ## BHS Partners Meeting
 
-Note: Our monthly <b>Partners Meeting</b> video conference call will follow each GBM session (11:30am to 12:30pm).
+<b>Note:</b> Our monthly <b>Partners Meeting</b> video conference call will follow each GBM session (11:30am to 12:30pm).
 
