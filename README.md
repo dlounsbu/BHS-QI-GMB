@@ -7,17 +7,17 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 <b>Time and Location: 9:00am to 11:00am; Einstein, 1300 Morris Park Ave., Block Building, 4th Floor Conf Rm</b>
 
-<b>Session 1.</b> <u>Getting started</u>: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our communities <br> (Thursday, 16-May-2019)<br>
+<b>Session 1.</b> Getting started: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our communities <br> (Thursday, 16-May-2019)<br>
 
 <b>Session 2.</b> Introduction to system dynamics model building: Using simulation to 'see' the problem and its solutions<br> (Thursday, 20-June-2019)<br>
 
 <b>Session 3.</b> More model building: Sources of information to support key assumptions and parameters in our work<br>(Thursday, 11-July-2019)<br>
 
-<b>Session 4.</b> Understanding complexity: Examining the interplay of BHS services, goals and outcomes<br>(Thursday, 8-August-2019)<br>
+<b>Session 4.</b> Understanding complexity: Examining the interplay of BHS services (enrollment, case management, counseling & education, and access to care), goals and outcomes<br>(Thursday, 8-August-2019)<br>
 
-<b>Session 5.</b> (Thursday, 19-September-2019)<br> 
+<b>Session 5.</b> Quality improvement scenarios: Modeling to learn how to meet or exceed BHS benchmarks for enrollment, case management, counseling & education, and access to care<br>(Thursday, 19-September-2019)<br> 
 
-<b>Session 6.</b> (Thursday, 10-October-2019)<br> 
+<b>Session 6.</b> Action planning: Designing and implementing strategies for BHS quality improvement<br>(Thursday, 10-October-2019)<br> 
 
 ## BHS Partners Meeting
 
