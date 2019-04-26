@@ -1,4 +1,4 @@
-# BHS-QI-GMB: Bronx Health Start QI via Group Model Building 
+## BHS-QI-GMB: Bronx Health Start QI via Group Model Building 
 Welcome to our repository of information and tools to support collaborative planning, implementation, and monitoring of <b>Bronx Healthy Start (BHS)</b> community programs and services. BHS is a federally-funded initiative to address disparities in materal and infant mortality in at risk communities of The Bronx. To promote an ethos of continual <b>Quality Improvement (QI)</b>, we have organized monthly <b>Group Model Building (GMB)</b> sessions. These sessions will be guided by best practices in system dynamics (SD) modeling, a rapidly evolving, interdisciplinary field of systems science research. SD modeling adds value to traditional QI and evaluation methods by engaging program stakeholders in a the process of building and validating tools that can help manage complex problems and interventions hypothesized to improve health system performance, patient outcomes, and population health. 
 
 ## Schedule of Group Model Building Sessions
