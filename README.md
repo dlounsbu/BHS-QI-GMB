@@ -7,13 +7,13 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 <b>Time and Location: 9:00am to 11:00am; Einstein, 1300 Morris Park Ave., Block Building, 4th Floor Conf Rm</b>
 
-<b>Session 1.</b> Getting started: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our communities (Thursday, 16-May-2019)<br>
+<b>Session 1.</b> Getting started: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our communities <br> (Thursday, 16-May-2019)<br>
 
-<b>Session 2.</b> Introduction to system dynamics model building: Using simulation to 'see' the problem [and its solutions!] (Thursday, 20-June-2019)<br>
+<b>Session 2.</b> Introduction to system dynamics model building: Using simulation to 'see' the problem [and its solutions]<br> (Thursday, 20-June-2019)<br>
 
-<b>Session 3.</b> (Thursday, 11-July-2019)<br>
+<b>Session 3.</b> More model building: Sources of information to support key assumptions and parameters in our work<br>(Thursday, 11-July-2019)<br>
 
-<b>Session 4.</b> (Thursday, 8-August-2019)<br>
+<b>Session 4.</b> Understanding complexity: Examining the interplay of BHS services, goals and outcomes<br>(Thursday, 8-August-2019)<br>
 
 <b>Session 5.</b> (Thursday, 19-September-2019)<br> 
 
@@ -21,5 +21,5 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 ## BHS Partners Meeting
 
-A 60-minute monthly <b>Partners Meeting video conference call</b> will follow GBM sessions (11:30am to 12:30pm).
+Note: Our monthly <b>Partners Meeting</b> video conference call will follow each GBM session (11:30am to 12:30pm).
 
