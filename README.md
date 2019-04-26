@@ -13,7 +13,7 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 <b>Session 3.</b> More model building: Sources of information to support key assumptions and parameters in our work<br>(Thursday, 11-July-2019)<br>
 
-<b>Session 4.</b> Understanding complexity: Examining the interplay of BHS services (enrollment, case management, counseling & education, and access to care), goals and outcomes<br>(Thursday, 8-August-2019)<br>
+<b>Session 4.</b> Understanding complexity: Examining the interplay of BHS services (enrollment, case management, counseling & education, and access to care) with stated program goals and outcomes<br>(Thursday, 8-August-2019)<br>
 
 <b>Session 5.</b> Quality improvement scenarios: Modeling to learn how to meet or exceed BHS benchmarks for enrollment, case management, counseling & education, and access to care<br>(Thursday, 19-September-2019)<br> 
 
