@@ -11,14 +11,15 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 <b>Session 2.</b> Introduction to system dynamics model building: Using simulation to 'see' the problem [and its solutions!] (Thursday, 20-June-2019)<br>
 
-<b>Session 3.</b> Thursday | 7/11/2019 |
+<b>Session 3.</b> (Thursday, 11-July-2019)<br>
 
-<b>Session 4.</b> Thursday | 8/8/2019  | 
+<b>Session 4.</b> (Thursday, 8-August-2019)<br>
 
-<b>Session 5.</b> Thursday | 9/19/2019 | 
+<b>Session 5.</b> (Thursday, 19-September-2019)<br> 
 
-<b>Session 6.</b> Thursday | 10/10/2019| 
+<b>Session 6.</b> (Thursday, 10-October-2019)<br> 
 
 ## BHS Partners Meeting
 
-Partners meeting (11:30 to 12:30)
+A 60-minute monthly <b>Partners Meeting video conference call</b> will follow GBM sessions (11:30am to 12:30pm).
+
