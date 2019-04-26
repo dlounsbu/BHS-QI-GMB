@@ -7,17 +7,17 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 <b>Time and Location: 9:00am to 11:00am; Einstein, 1300 Morris Park Ave., Block Building, 4th Floor Conf Rm</b>
 
-<b>Session 1.</b> Thursday | 5/16/2019 | Getting started: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our community
+<b>Session 1.</b> Thursday | 5/16/2019 | Getting started: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our communities
 
-Session 2. Thursday | 6/20/2019 | 9:00am to 11:00am | Location: Einstein, Block Building 4th Floor Conference Room
+<b>Session 2.</b> Thursday | 6/20/2019 | Introduction to system dynamics model building: Using simulation to 'see' the problem (and its solutions) 
 
-Session 3. Thursday | 7/11/2019 | 9:00am to 11:00am | Location: Einstein, Block Building 4th Floor Conference Room         
+<b>Session 3.</b> Thursday | 7/11/2019 |
 
-Session 4. Thursday | 8/8/2019  | 9:00am to 11:00am | Location: Block Building 4th Floor Conference Room  
+<b>Session 4.</b> Thursday | 8/8/2019  | 
 
-Session 5. Thursday | 9/19/2019 | 9:00am to 11:00am | Location: Block Building 4th Floor Conference Room  
+<b>Session 5.</b> Thursday | 9/19/2019 | 
 
-Session 6. Thursday | 10/10/2019| 9:00am to 11:00am | Location: Block Building 4th Floor Conference Room 
+<b>Session 6.</b> Thursday | 10/10/2019| 
 
 ## BHS Partners Meeting
 
