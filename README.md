@@ -17,7 +17,7 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 <b>Session 5.</b> Quality improvement scenarios: Modeling to learn how to meet or exceed BHS benchmarks for enrollment, case management, counseling & education, and access to care<br>(Thursday, 19-September-2019)<br> 
 
-<b>Session 6.</b> Action planning: Designing and implementing strategies for BHS quality improvement<br>(Thursday, 10-October-2019)<br> 
+<b>Session 6.</b> BHS action plans: Designing and implementing model-informed strategies that impact infant and maternal mortality in our communities<br>(Thursday, 10-October-2019)<br> 
 
 ## BHS Partners Meeting
 
