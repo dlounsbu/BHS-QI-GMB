@@ -9,7 +9,7 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 <b>Session 1.</b> Getting started: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our communities <br> (Thursday, 16-May-2019)<br>
 
-<b>Session 2.</b> Introduction to system dynamics model building: Using simulation to 'see' the problem [and its solutions]<br> (Thursday, 20-June-2019)<br>
+<b>Session 2.</b> Introduction to system dynamics model building: Using simulation to 'see' the problem and its solutions<br> (Thursday, 20-June-2019)<br>
 
 <b>Session 3.</b> More model building: Sources of information to support key assumptions and parameters in our work<br>(Thursday, 11-July-2019)<br>
 
