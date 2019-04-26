@@ -3,7 +3,7 @@ Welcome to our repository of information and tools to support collaborative plan
 
 ## Schedule of Group Model Building Sessions
 
-<b>Time and Location: 9:00am to 11:00am; Einstein, 1300 Morris Park Ave., Block Building, 4th Floor Conf Rm</b>
+<b>Time and Location:</b> 9:00am to 11:00am; Einstein, 1300 Morris Park Ave., Block Building, 4th Floor Conf Room
 
 <b>Session 1.</b> Getting started: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our communities <br> (Thursday, 16-May-2019)<br>
 
