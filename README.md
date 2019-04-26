@@ -6,10 +6,15 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 ## Schedule of QI-Group Model Building Sessions
 
 Session 1. Thursday | 5/16/2019 | 9:30am to 11:00am | Location: Block Building 4th Floor Conference Room
+
 Session 2. Thursday | 6/20/2019            Bronx Health Start - Team meeting (9:30 to 11:00); Partners meeting (11:30 to 12:30)
+
 Session 3. Thursday | 7/11/2019            Bronx Health Start - Team meeting (9:30 to 11:00); Partners meeting (11:30 to 12:30)
+
 Session 4. Thursday | 8/8/2019              Bronx Health Start - Team meeting (9:30 to 11:00); Partners meeting (11:30 to 12:30)
+
 Session 5. Thursday | 9/19/2019            Bronx Health Start - Team meeting (9:30 to 11:00); Partners meeting (11:30 to 12:30)
+
 Session 6. Thursday | 10/10/2019         Bronx Health Start - Team meeting (9:30 to 11:00); Partners meeting (11:30 to 12:30)
 
 ## BHS Partners Meeting
