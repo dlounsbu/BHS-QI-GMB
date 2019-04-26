@@ -5,7 +5,7 @@ To promote an ethos of continual <b>Quality Improvement (QI)</b> in the BHS Part
 
 ## Schedule of Group Model Building Sessions
 
-<b>Time and location:</b> 9:00am to 11:00am; Einstein, Block Building 4th Floor Conference Room
+<b>Time and Location: 9:00am to 11:00am; Einstein, 1300 Morris Park Ave., Block Building, 4th Floor Conf Rm</b>
 
 Session 1. Thursday | 5/16/2019 | Getting starting: <i>Systems thinking</i> and <i>action</i> to reduce infant and maternal mortality in our community
 
