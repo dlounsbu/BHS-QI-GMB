@@ -9,7 +9,7 @@ Welcome to our repository of information and tools to support collaborative plan
 
 <b>Session 2.</b> Introduction to system dynamics model building: Using simulation to 'see' the problem (<i>and</i> its solutions!)<br> (Thursday, 20-June-2019)<br>
 
-<b>Session 3.</b> More model building: Sources of information to support key assumptions and parameters in our work<br>(Thursday, 11-July-2019)<br>
+<b>Session 3.</b> More model building: Sources of information to support key assumptions and parameters in our simulation tools<br>(Thursday, 11-July-2019)<br>
 
 <b>Session 4.</b> Understanding complexity: Examining the interplay of BHS services (enrollment, case management, counseling & education, and access to care) with stated program goals and outcomes<br>(Thursday, 8-August-2019)<br>
 
