@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
+	<header>
+		<smile version="1.0" namespace="std, isee"/>
+		<name>BHS demo 2019-05-15 v1</name>
+		<uuid>9428d669-1b03-471b-b0ff-bb42ace6e1c0</uuid>
+		<vendor>isee systems, inc.</vendor>
+		<product version="1.7.1" isee:build_number="1574" isee:saved_by_v1="true" lang="en">Stella Architect</product>
+	</header>
+	<sim_specs isee:simulation_delay="0.00311751" method="Euler" time_units="Weeks" isee:instantaneous_flows="false">
+		<start>0</start>
+		<stop>416</stop>
+		<dt reciprocal="true">4</dt>
+	</sim_specs>
+	<isee:prefs show_module_prefix="true" live_update_on_drag="true" show_restore_buttons="false" layer="model" interface_scale_ui="true" interface_max_page_width="10000" interface_max_page_height="10000" interface_min_page_width="0" interface_min_page_height="0" saved_runs="5" keep="false" rifp="true"/>
+	<isee:multiplayer_settings include_chat="true" allow_observers="false" advance_time_increment="1" observer_start_page="home_page" enabled="false"/>
+	<isee:time_formats default_format="Builtin">
+		<isee:time_format name="Builtin" type="adaptive"/>
+	</isee:time_formats>
+	<default_format/>
+	<model_units>
+		<unit name="People">
+			<eqn/>
+			<alias>person</alias>
+			<alias>persons</alias>
+		</unit>
+		<unit name="Dimensionless">
+			<eqn>1</eqn>
+			<alias>dmnl</alias>
+			<alias>unitless</alias>
+			<alias>fraction</alias>
+		</unit>
+		<unit name="Weeks">
+			<eqn/>
+			<alias>wk</alias>
+			<alias>week</alias>
+		</unit>
+	</model_units>
+	<model>
+		<variables>
+			<stock name="Preconception">
+				<eqn>0</eqn>
+				<inflow>Newly_enrolled</inflow>
+				<outflow>Pregnancy_rate</outflow>
+				<non_negative/>
+				<units>Persons</units>
+			</stock>
+			<stock name="Perinatal">
+				<eqn>1</eqn>
+				<inflow>Pregnancy_rate</inflow>
+				<outflow>Live_birth_rate</outflow>
+				<outflow>Infant_mortality_rate</outflow>
+				<non_negative/>
+				<units>Persons</units>
+			</stock>
+			<stock name="Post\nPartum">
+				<eqn>0</eqn>
+				<inflow>Live_birth_rate</inflow>
+				<outflow>Recovered_leaving_the_community</outflow>
+				<non_negative/>
+				<units>Persons</units>
+			</stock>
+			<flow name="Pregnancy\nrate">
+				<eqn>Preconception/Time_to_become_pregnant</eqn>
+				<non_negative/>
+				<units>Persons/Week</units>
+			</flow>
+			<flow name="Live birth rate">
+				<eqn>Perinatal/Average_time_to_birth</eqn>
+				<non_negative/>
+				<units>Persons/Week</units>
+			</flow>
+			<flow name="Newly enrolled">
+				<eqn>Newly_enrolled_preconception_participants_per_week</eqn>
+				<non_negative/>
+				<units>Persons/Week</units>
+			</flow>
+			<aux name="Newly enrolled\npreconception\nparticipants\nper week">
+				<eqn>2</eqn>
+				<units>Persons/Week</units>
+			</aux>
+			<aux name="Time to become\npregnant">
+				<eqn>16</eqn>
+				<units>Weeks</units>
+			</aux>
+			<aux name="Total BHS\nParticipants">
+				<eqn>Preconception+Perinatal+Post_Partum</eqn>
+				<units>Persons</units>
+			</aux>
+			<aux name="Prop pregnant">
+				<eqn>Perinatal/Total_BHS_Participants</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="Average time to birth">
+				<eqn>36</eqn>
+				<units>Weeks</units>
+			</aux>
+			<flow name="Recovered leaving\nthe community">
+				<eqn>Post_Partum/Time_in_post_partum_care</eqn>
+				<non_negative/>
+				<units>Persons/Week</units>
+			</flow>
+			<stock name="Cumulative\ninfant\nmortality">
+				<eqn>0</eqn>
+				<inflow>Infant_mortality_rate</inflow>
+				<non_negative/>
+				<units>Persons</units>
+			</stock>
+			<flow name="Infant mortality rate">
+				<eqn>(Perinatal/Average_time_to_birth)*Infant_mortality_factor</eqn>
+				<non_negative/>
+				<units>Persons/Week</units>
+			</flow>
+			<aux name="Time in\npost partum\ncare">
+				<eqn>52</eqn>
+				<units>Weeks</units>
+			</aux>
+			<aux name="Infant\nmortality\nfactor">
+				<eqn>.0008333</eqn>
+				<units>dmnl</units>
+			</aux>
+			<aux name="Ratio of Participants\nper CHW">
+				<eqn>Total_BHS_Participants/Active_Peer_Leaders</eqn>
+			</aux>
+			<aux name="Active peer leader tenure">
+				<eqn>260</eqn>
+				<units>Weeks</units>
+			</aux>
+			<flow name="CHW\ntraining rate">
+				<eqn>(CHW_Staffing_Goal-Active_Peer_Leaders)/Time_to_train_new_CHWs</eqn>
+				<units>Persons/Week</units>
+			</flow>
+			<flow name="Peer leaders\nbecoming inactive">
+				<eqn>Active_Peer_Leaders/Active_peer_leader_tenure</eqn>
+				<non_negative/>
+				<units>Persons/Week</units>
+			</flow>
+			<stock name="Active\nPeer Leaders">
+				<eqn>1</eqn>
+				<inflow>CHW_training_rate</inflow>
+				<outflow>Peer_leaders_becoming_inactive</outflow>
+				<non_negative/>
+				<units>Persons</units>
+			</stock>
+			<aux name="Time to train\nnew CHWs">
+				<eqn>12</eqn>
+				<units>Weeks</units>
+			</aux>
+			<aux name="CHW Staffing\nGoal">
+				<eqn>6</eqn>
+				<units>Persons</units>
+			</aux>
+			<isee:dependencies>
+				<var name="Pregnancy_rate">
+					<in>Time_to_become_pregnant</in>
+					<in>Preconception</in>
+				</var>
+				<var name="Live_birth_rate">
+					<in>Average_time_to_birth</in>
+					<in>Perinatal</in>
+				</var>
+				<var name="Newly_enrolled">
+					<in>Newly_enrolled_preconception_participants_per_week</in>
+				</var>
+				<var name="Total_BHS_Participants">
+					<in>Preconception</in>
+					<in>Perinatal</in>
+					<in>Post_Partum</in>
+				</var>
+				<var name="Prop_pregnant">
+					<in>Total_BHS_Participants</in>
+					<in>Perinatal</in>
+				</var>
+				<var name="Recovered_leaving_the_community">
+					<in>Time_in_post_partum_care</in>
+					<in>Post_Partum</in>
+				</var>
+				<var name="Infant_mortality_rate">
+					<in>Perinatal</in>
+					<in>Infant_mortality_factor</in>
+					<in>Average_time_to_birth</in>
+				</var>
+				<var name="Ratio_of_Participants_per_CHW">
+					<in>Total_BHS_Participants</in>
+					<in>Active_Peer_Leaders</in>
+				</var>
+				<var name="CHW_training_rate">
+					<in>Time_to_train_new_CHWs</in>
+					<in>CHW_Staffing_Goal</in>
+					<in>Active_Peer_Leaders</in>
+				</var>
+				<var name="Peer_leaders_becoming_inactive">
+					<in>Active_peer_leader_tenure</in>
+					<in>Active_Peer_Leaders</in>
+				</var>
+			</isee:dependencies>
+		</variables>
+		<views>
+			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+				<numeric_display color="blue" background="white" font_size="9pt" isee:transparent="false"/>
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="12pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+					<isee:series_styles>
+						<isee:series_style color="blue" thickness="2"/>
+						<isee:series_style color="red" thickness="2"/>
+						<isee:series_style color="fuchsia" thickness="2"/>
+						<isee:series_style color="#008F44" thickness="2"/>
+						<isee:series_style color="#FF7F00" thickness="2"/>
+						<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#FF007F" thickness="1"/>
+						<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+						<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+						<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+						<isee:series_style color="#C8C8C8" thickness="1"/>
+					</isee:series_styles>
+				</graph>
+				<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				<button color="black" background="#E0E0E0" font_size="12pt" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595"/>
+				<isee:annotation color="black" background="#E0E0E0" font_size="12pt" transparent="false" corner_radius="0" isee:flat="false" icon_side="top" isee:highlight_on_hover="false" isee:highlight_color="#959595" popup_background_color="#FFFECF"/>
+				<slider color="black" background="#E0E0E0" font_size="12pt" num_ticks="3" label_side="top" wrap_title="true" vertical="false" isee:always_show_hover_tip="false" input_expands="true" input_width="100"/>
+				<isee:sim_speed_slider color="black" background="white"/>
+				<isee:time_slider color="#E95F74" background="silver"/>
+				<isee:pie_input color="black" background="white" font_size="12pt" legend_position="bottom" isee:transparent="false"/>
+				<knob color="#66CC66" background="#E0E0E0" font_size="12pt" label_side="bottom" wrap_title="true"/>
+				<numeric_input color="black" background="#E0E0E0" font_size="12pt" label_side="left" wrap_title="true" input_expands="false" input_width="100"/>
+				<switch color="black" background="#E0E0E0" font_size="12pt" label_side="top" wrap_title="true" isee:appearance="switch"/>
+				<options color="black" background="white" appearance="radio-buttons" arrangement="vertical"/>
+				<graphical_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<group_input color="black" background="#E0E0E0" font_size="12pt"/>
+				<lamp color="black" background="white" font_size="9pt"/>
+				<gauge color="black" background="white" font_size="9pt" needle_color="#F09F72" bar_color="#EEEEEE" bar_progress_color="black" appearance="radial" num_major_ticks="11" num_minor_ticks="11" show_numeric_value="true"/>
+				<isee:spatial_map color="black" background="white" font_size="12pt"/>
+				<isee:animation_object color="black" background="white" font_size="12pt"/>
+			</style>
+			<view isee:show_pages="false" page_width="1034" page_height="794" isee:page_cols="2" isee:page_rows="2" isee:scroll_x="450.714" zoom="140" isee:popup_graphs_are_comparative="true" type="stock_flow">
+				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+					<stock color="blue" background="white" font_weight="bold" font_color="blue" font_size="12pt" label_side="top">
+						<shape type="rectangle" width="45" height="35"/>
+					</stock>
+					<flow color="blue" background="white" font_weight="bold" font_color="blue" font_size="12pt" label_side="bottom"/>
+					<module color="blue" background="white" font_weight="bold" font_color="blue" font_size="12pt" label_side="top">
+						<shape type="rectangle" width="55" height="45"/>
+					</module>
+					<aux color="blue" background="white" font_weight="bold" font_color="blue" font_size="12pt" label_side="bottom">
+						<shape type="circle" radius="18"/>
+					</aux>
+					<group color="red" background="white" font_color="red" font_size="9pt"/>
+					<connector color="#FF007F" background="white" font_color="#FF007F" font_size="9pt" isee:thickness="1"/>
+					<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+					<isee:loop_indicator color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+					<numeric_display color="blue" background="white" font_size="9pt" isee:transparent="false"/>
+					<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false" axis_title_font_style="normal" axis_title_font_weight="normal" axis_title_text_decoration="none" axis_title_text_align="center" axis_title_vertical_text_align="center" axis_title_font_color="black" axis_title_font_family="Arial" axis_title_font_size="12pt" axis_title_text_padding="2" axis_title_text_border_color="black" axis_title_text_border_width="thin" axis_title_text_border_style="none" axis_label_font_style="normal" axis_label_font_weight="normal" axis_label_text_decoration="none" axis_label_text_align="center" axis_label_vertical_text_align="center" axis_label_font_color="black" axis_label_font_family="Arial" axis_label_font_size="12pt" axis_label_text_padding="2" axis_label_text_border_color="black" axis_label_text_border_width="thin" axis_label_text_border_style="none">
+						<isee:series_styles>
+							<isee:series_style color="blue" thickness="2"/>
+							<isee:series_style color="red" thickness="2"/>
+							<isee:series_style color="fuchsia" thickness="2"/>
+							<isee:series_style color="#008F44" thickness="2"/>
+							<isee:series_style color="#FF7F00" thickness="2"/>
+							<isee:series_style color="#7F00FF" thickness="1" pen_style="dot_dashed"/>
+							<isee:series_style color="#0CA0FF" thickness="1" pen_style="dotted"/>
+							<isee:series_style color="lime" thickness="1" pen_style="dashed"/>
+							<isee:series_style color="#FF007F" thickness="1"/>
+							<isee:series_style color="aqua" thickness="1" pen_style="dot_dashed"/>
+							<isee:series_style color="#F586FF" thickness="1" pen_style="dotted"/>
+							<isee:series_style color="black" thickness="1" pen_style="dashed"/>
+							<isee:series_style color="#C8C8C8" thickness="1"/>
+						</isee:series_styles>
+					</graph>
+					<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
+				</style>
+				<stock label_side="center" x="138.929" y="139.644" width="94.1429" height="68" name="Preconception"/>
+				<stock label_side="center" x="347.786" y="139.286" width="98.4286" height="68.7143" name="Perinatal"/>
+				<stock label_side="center" x="565.389" y="136.929" width="102" height="66.5714" name="Post\nPartum"/>
+				<flow x="284.428" y="169.715" name="Pregnancy\nrate">
+					<pts>
+						<pt x="233.071" y="169.715"/>
+						<pt x="347.786" y="169.715"/>
+					</pts>
+				</flow>
+				<flow x="490.802" y="158" width="18" height="18" name="Live birth rate">
+					<pts>
+						<pt x="446.214" y="167"/>
+						<pt x="565.389" y="167"/>
+					</pts>
+				</flow>
+				<flow label_side="bottom" x="75.8929" y="169.286" name="Newly enrolled">
+					<pts>
+						<pt x="12.8571" y="169.286"/>
+						<pt x="138.929" y="169.286"/>
+					</pts>
+				</flow>
+				<aux color="#00AA00" font_color="#00AA00" label_side="top" x="83.4643" y="107.302" name="Newly enrolled\npreconception\nparticipants\nper week"/>
+				<aux color="#00AA00" font_color="#00AA00" label_side="left" x="221.929" y="251.044" width="18" height="18" name="Time to become\npregnant"/>
+				<aux label_side="top" x="532.46" y="50.6508" name="Total BHS\nParticipants"/>
+				<aux label_side="left" label_angle="135" x="458.786" y="97.6349" name="Prop pregnant"/>
+				<aux color="#00AA00" font_color="#00AA00" label_side="right" x="541.46" y="238.893" width="18" height="18" name="Average time to birth"/>
+				<flow label_side="bottom" x="735.98" y="155.714" name="Recovered leaving\nthe community">
+					<pts>
+						<pt x="667.389" y="155.714"/>
+						<pt x="828.571" y="155.714"/>
+					</pts>
+				</flow>
+				<connector uid="1" angle="299.779">
+					<from>Newly_enrolled_preconception_participants_per_week</from>
+					<to>Newly_enrolled</to>
+				</connector>
+				<connector uid="2" angle="38.6598">
+					<from>Preconception</from>
+					<to>Total_BHS_Participants</to>
+				</connector>
+				<connector uid="3" angle="23.2112">
+					<from>Perinatal</from>
+					<to>Total_BHS_Participants</to>
+				</connector>
+				<connector uid="4" angle="107.064">
+					<from>Post_Partum</from>
+					<to>Total_BHS_Participants</to>
+				</connector>
+				<connector uid="5" angle="200.319">
+					<from>Total_BHS_Participants</from>
+					<to>Prop_pregnant</to>
+				</connector>
+				<connector uid="6" angle="80.8528">
+					<from>Average_time_to_birth</from>
+					<to>Live_birth_rate</to>
+				</connector>
+				<connector uid="7" angle="63.5148">
+					<from>Perinatal</from>
+					<to>Prop_pregnant</to>
+				</connector>
+				<stock label_side="center" x="350.643" y="273.389" width="96.2857" height="62.2857" name="Cumulative\ninfant\nmortality"/>
+				<flow label_side="right" x="394.857" y="234.695" name="Infant mortality rate">
+					<pts>
+						<pt x="394.857" y="208.001"/>
+						<pt x="394.857" y="273.389"/>
+					</pts>
+				</flow>
+				<connector uid="8" angle="297.626">
+					<from>Perinatal</from>
+					<to>Infant_mortality_rate</to>
+				</connector>
+				<aux color="#00AA00" font_color="#00AA00" label_side="top" x="716.964" y="107.302" name="Time in\npost partum\ncare"/>
+				<connector uid="9" angle="321.898">
+					<from>Time_in_post_partum_care</from>
+					<to>Recovered_leaving_the_community</to>
+				</connector>
+				<aux color="#00AA00" font_color="#00AA00" label_side="left" x="335.572" y="259.96" name="Infant\nmortality\nfactor"/>
+				<connector uid="10" angle="2.70756">
+					<from>Infant_mortality_factor</from>
+					<to>Infant_mortality_rate</to>
+				</connector>
+				<connector uid="11" angle="10.242">
+					<from>Perinatal</from>
+					<to>Live_birth_rate</to>
+				</connector>
+				<stacked_container uid="12" x="368.286" y="346.715" width="350" height="250">
+					<graph x="368.286" y="346.715" width="350" height="250" comparative="true" isee:comparative_override_thickness="2" type="time_series" isee:points_only="false" show_grid="false" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="5" title="Graph" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" right_axis_multi_scale="false" right_axis_auto_scale="true">
+						<plot color="blue" pen_width="2" index="0" show_y_axis="true">
+							<entity name="Perinatal"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="13" x="186" y="727.572">
+					<graph x="11" y="602.572" width="350" height="250" type="time_series" isee:points_only="false" show_grid="false" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="5" title="Pregnancy and Live Birth Rates" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" right_axis_multi_scale="false" right_axis_auto_scale="true">
+						<plot color="blue" pen_width="2" index="0" show_y_axis="true">
+							<entity name="Pregnancy_rate"/>
+						</plot>
+						<plot color="red" pen_width="2" index="1" show_y_axis="true">
+							<entity name="Live_birth_rate"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="14" x="729.286" y="606.143" width="350" height="250">
+					<graph x="729.286" y="606.143" width="350" height="250" type="time_series" isee:points_only="false" show_grid="false" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="5" title="" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" right_axis_multi_scale="false" right_axis_auto_scale="true">
+						<plot color="blue" pen_width="2" index="0" show_y_axis="true">
+							<entity name="Preconception"/>
+						</plot>
+						<plot color="red" pen_width="2" index="1" show_y_axis="true">
+							<entity name="Perinatal"/>
+						</plot>
+						<plot color="#FF7F00" pen_width="2" index="2" show_y_axis="true">
+							<entity name="Cumulative_infant_mortality"/>
+						</plot>
+						<plot color="#008F44" pen_width="2" index="3" show_y_axis="true">
+							<entity name="Post_Partum"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<connector uid="15" angle="99.8234">
+					<from>Time_to_become_pregnant</from>
+					<to>Pregnancy_rate</to>
+				</connector>
+				<connector uid="16" angle="17.7872">
+					<from>Preconception</from>
+					<to>Pregnancy_rate</to>
+				</connector>
+				<connector uid="17" angle="27.2165">
+					<from>Post_Partum</from>
+					<to>Recovered_leaving_the_community</to>
+				</connector>
+				<stacked_container uid="18" x="543.286" y="731.143">
+					<graph x="368.286" y="606.143" width="350" height="250" comparative="true" type="time_series" isee:points_only="false" show_grid="false" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="5" title="Cumulative Infant Mortality" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" right_axis_multi_scale="false" right_axis_auto_scale="true">
+						<plot color="blue" pen_width="2" index="0" show_y_axis="true">
+							<entity name="Cumulative_infant_mortality"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="19" x="11" y="346.715" width="350" height="250">
+					<graph x="11" y="346.715" width="350" height="250" comparative="true" isee:comparative_override_thickness="2" type="time_series" isee:points_only="false" show_grid="false" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="5" title="Graph" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" right_axis_multi_scale="false" right_axis_auto_scale="true">
+						<plot color="blue" isee:keep_zero_visible="true" pen_width="2" index="0" show_y_axis="true">
+							<entity name="Preconception"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<stacked_container uid="20" x="729.286" y="346.715" width="350" height="250">
+					<graph x="729.286" y="346.715" width="350" height="250" comparative="true" isee:comparative_override_thickness="2" type="time_series" isee:points_only="false" show_grid="false" include_units_in_legend="false" plot_numbers="false" isee:label_pie_slices="false" num_x_grid_lines="0" num_y_grid_lines="0" num_x_labels="5" num_y_labels="5" title="Graph" isee:fill_intensity="0.1" left_axis_multi_scale="false" left_axis_auto_scale="true" right_axis_multi_scale="false" right_axis_auto_scale="true">
+						<plot color="blue" pen_width="2" index="0" show_y_axis="true">
+							<entity name="Post_Partum"/>
+						</plot>
+					</graph>
+				</stacked_container>
+				<connector uid="21" angle="194.907">
+					<from>Average_time_to_birth</from>
+					<to>Infant_mortality_rate</to>
+				</connector>
+				<aux x="901" y="51.7143" width="18" height="18" name="Ratio of Participants\nper CHW"/>
+				<connector uid="22" angle="28.6901">
+					<from>Total_BHS_Participants</from>
+					<to>Ratio_of_Participants_per_CHW</to>
+				</connector>
+				<aux color="#00AA00" font_color="#00AA00" label_side="right" x="1600.31" y="275.044" name="Active peer leader tenure"/>
+				<flow label_side="top" x="1279.94" y="202.429" width="18" height="18" name="CHW\ntraining rate">
+					<pts>
+						<pt x="1198.93" y="211.429"/>
+						<pt x="1366.95" y="211.429"/>
+					</pts>
+				</flow>
+				<flow label_side="top" x="1523.68" y="217.286" name="Peer leaders\nbecoming inactive">
+					<pts>
+						<pt x="1464.79" y="217.286"/>
+						<pt x="1606.57" y="217.286"/>
+					</pts>
+				</flow>
+				<connector uid="23" isee:thickness="1.5" angle="187.872">
+					<from>Active_peer_leader_tenure</from>
+					<to>Peer_leaders_becoming_inactive</to>
+				</connector>
+				<stock label_side="center" x="1366.95" y="172.452" width="97.8333" height="73.6667" name="Active\nPeer Leaders"/>
+				<connector uid="24" isee:thickness="1.5" angle="18.2487">
+					<from>Active_Peer_Leaders</from>
+					<to>Peer_leaders_becoming_inactive</to>
+				</connector>
+				<aux color="#00AA00" font_color="#00AA00" label_side="bottom" x="1217.21" y="275.044" name="Time to train\nnew CHWs"/>
+				<connector uid="25" isee:thickness="1.5" angle="13.2888">
+					<from>Time_to_train_new_CHWs</from>
+					<to>CHW_training_rate</to>
+				</connector>
+				<aux color="#00AA00" font_color="#00AA00" label_side="bottom" x="1327.07" y="278.044" name="CHW Staffing\nGoal"/>
+				<connector uid="26" angle="89.7629">
+					<from>CHW_Staffing_Goal</from>
+					<to>CHW_training_rate</to>
+				</connector>
+				<connector uid="27" angle="155.383">
+					<from>Active_Peer_Leaders</from>
+					<to>CHW_training_rate</to>
+				</connector>
+				<connector uid="28" angle="135.399">
+					<from>Active_Peer_Leaders</from>
+					<to>Ratio_of_Participants_per_CHW</to>
+				</connector>
+			</view>
+			<view background="white" page_width="1066" page_height="600" home_view="true" type="interface">
+				<style/>
+			</view>
+			<isee:templates>
+				<view background="white" page_width="1066" page_height="600" type="template">
+					<style/>
+				</view>
+			</isee:templates>
+			<isee:stories>
+				<isee:story uid="29" name="Story 1">
+					<view background="white" page_width="1066" page_height="600" zoom="165" type="interface">
+						<style/>
+						<isee:model_view uid="30" x="0" y="0" width="1066" height="600" isee:locked="true" zoom="1" center_x="533" center_y="300" locked_view="true" transparent="true" use_visible_list="true" include_equation="true">
+							<model name="Top-Level"/>
+							<isee:visible_list>
+								<item uid="13"/>
+								<item uid="14"/>
+								<item uid="12"/>
+								<entity name="Preconception"/>
+							</isee:visible_list>
+							<isee:highlight_list/>
+						</isee:model_view>
+						<button z_index="1" label="" uid="31" x="1026" y="60">
+							<actions>
+								<action>start</action>
+							</actions>
+						</button>
+						<button label="" uid="32" x="1026" y="23">
+							<actions>
+								<action>restore_all</action>
+							</actions>
+						</button>
+						<button label="" uid="33" x="1026" y="98">
+							<actions>
+								<action target="next_page">navigate</action>
+							</actions>
+						</button>
+						<button label="" uid="34" x="1026" y="135">
+							<actions>
+								<action target="previous_page">navigate</action>
+							</actions>
+						</button>
+					</view>
+					<view background="white" page_width="1066" page_height="600" zoom="165" type="interface">
+						<style/>
+						<isee:model_view uid="35" x="0" y="0" width="1066" height="600" isee:locked="true" zoom="1" center_x="533" center_y="300" locked_view="true" transparent="true" use_visible_list="true" include_equation="true">
+							<model name="Top-Level"/>
+							<isee:visible_list>
+								<entity name="Newly_enrolled_preconception_participants_per_week"/>
+								<entity name="Newly_enrolled"/>
+								<entity name="Preconception"/>
+								<item uid="12"/>
+								<item uid="14"/>
+								<item uid="13"/>
+								<item uid="1"/>
+							</isee:visible_list>
+							<isee:highlight_list>
+								<item uid="1"/>
+								<entity name="Newly_enrolled_preconception_participants_per_week"/>
+								<entity name="Newly_enrolled"/>
+							</isee:highlight_list>
+						</isee:model_view>
+						<button z_index="1" label="" uid="36" x="1027" y="63">
+							<actions>
+								<action>start</action>
+							</actions>
+						</button>
+						<button label="" uid="37" x="1027" y="26">
+							<actions>
+								<action>restore_all</action>
+							</actions>
+						</button>
+						<button label="" uid="38" x="1027" y="101">
+							<actions>
+								<action target="next_page">navigate</action>
+							</actions>
+						</button>
+						<button label="" uid="39" x="1027" y="138">
+							<actions>
+								<action target="previous_page">navigate</action>
+							</actions>
+						</button>
+					</view>
+					<view background="white" page_width="1066" page_height="600" zoom="165" type="interface">
+						<style/>
+						<isee:model_view uid="40" x="0" y="0" width="1066" height="600" isee:locked="true" zoom="1" center_x="533" center_y="300" locked_view="true" use_visible_list="true" include_equation="true">
+							<model name="Top-Level"/>
+							<isee:visible_list>
+								<item uid="13"/>
+								<item uid="1"/>
+								<item uid="10"/>
+								<entity name="Infant_mortality_rate"/>
+								<entity name="Newly_enrolled"/>
+								<entity name="Preconception"/>
+								<item uid="2"/>
+								<item uid="3"/>
+								<item uid="6"/>
+								<entity name="Live_birth_rate"/>
+								<entity name="Infant_mortality_factor"/>
+								<entity name="Average_time_to_birth"/>
+								<item uid="7"/>
+								<entity name="Time_to_become_pregnant"/>
+								<item uid="11"/>
+								<entity name="Perinatal"/>
+								<item uid="14"/>
+								<item uid="5"/>
+								<entity name="Total_BHS_Participants"/>
+								<entity name="Prop_pregnant"/>
+								<item uid="8"/>
+								<entity name="Cumulative_infant_mortality"/>
+								<entity name="Newly_enrolled_preconception_participants_per_week"/>
+								<entity name="Pregnancy_rate"/>
+								<item uid="12"/>
+							</isee:visible_list>
+							<isee:highlight_list>
+								<item uid="10"/>
+								<entity name="Pregnancy_rate"/>
+								<item uid="6"/>
+								<item uid="5"/>
+								<item uid="3"/>
+								<item uid="2"/>
+								<entity name="Infant_mortality_rate"/>
+								<entity name="Live_birth_rate"/>
+								<entity name="Average_time_to_birth"/>
+								<entity name="Infant_mortality_factor"/>
+								<entity name="Time_to_become_pregnant"/>
+								<item uid="11"/>
+								<entity name="Perinatal"/>
+								<entity name="Prop_pregnant"/>
+								<entity name="Total_BHS_Participants"/>
+								<item uid="8"/>
+								<entity name="Cumulative_infant_mortality"/>
+								<item uid="7"/>
+							</isee:highlight_list>
+						</isee:model_view>
+						<button z_index="1" label="" uid="41" x="1024" y="62">
+							<actions>
+								<action>start</action>
+							</actions>
+						</button>
+						<button label="" uid="42" x="1024" y="25">
+							<actions>
+								<action>restore_all</action>
+							</actions>
+						</button>
+						<button label="" uid="43" x="1024" y="100">
+							<actions>
+								<action target="next_page">navigate</action>
+							</actions>
+						</button>
+						<button label="" uid="44" x="1024" y="137">
+							<actions>
+								<action target="previous_page">navigate</action>
+							</actions>
+						</button>
+					</view>
+					<view background="white" page_width="1066" page_height="600" type="interface">
+						<style/>
+						<isee:model_view uid="45" x="0" y="0" width="1066" height="600" isee:locked="true" zoom="1" center_x="533" center_y="300" locked_view="true" transparent="true" use_visible_list="true" include_equation="true">
+							<model name="Top-Level"/>
+							<isee:visible_list>
+								<entity name="Newly_enrolled"/>
+								<entity name="Preconception"/>
+								<item uid="13"/>
+								<entity name="Time_to_become_pregnant"/>
+								<item uid="3"/>
+								<item uid="2"/>
+								<entity name="Recovered_leaving_the_community"/>
+								<item uid="14"/>
+								<item uid="5"/>
+								<item uid="6"/>
+								<item uid="10"/>
+								<entity name="Time_in_post_partum_care"/>
+								<item uid="1"/>
+								<item uid="7"/>
+								<item uid="4"/>
+								<entity name="Newly_enrolled_preconception_participants_per_week"/>
+								<item uid="12"/>
+								<item uid="9"/>
+								<entity name="Pregnancy_rate"/>
+								<entity name="Live_birth_rate"/>
+								<entity name="Average_time_to_birth"/>
+								<entity name="Infant_mortality_factor"/>
+								<entity name="Post_Partum"/>
+								<item uid="11"/>
+								<entity name="Perinatal"/>
+								<entity name="Total_BHS_Participants"/>
+								<entity name="Prop_pregnant"/>
+								<item uid="8"/>
+								<entity name="Cumulative_infant_mortality"/>
+								<entity name="Infant_mortality_rate"/>
+							</isee:visible_list>
+							<isee:highlight_list>
+								<item uid="9"/>
+								<entity name="Recovered_leaving_the_community"/>
+								<entity name="Time_in_post_partum_care"/>
+								<item uid="4"/>
+								<entity name="Post_Partum"/>
+								<entity name="Average_time_to_birth"/>
+							</isee:highlight_list>
+						</isee:model_view>
+						<button z_index="1" label="" uid="46" x="1022" y="62">
+							<actions>
+								<action>start</action>
+							</actions>
+						</button>
+						<button label="" uid="47" x="1022" y="25">
+							<actions>
+								<action>restore_all</action>
+							</actions>
+						</button>
+						<button label="" uid="48" x="1022" y="100">
+							<actions>
+								<action target="next_page">navigate</action>
+							</actions>
+						</button>
+						<button label="" uid="49" x="1022" y="137">
+							<actions>
+								<action target="previous_page">navigate</action>
+							</actions>
+						</button>
+					</view>
+				</isee:story>
+			</isee:stories>
+		</views>
+	</model>
+</xmile>
+
