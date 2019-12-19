@@ -15,6 +15,6 @@ Welcome to our repository of information and tools to support collaborative plan
 
 <b>Session 5.</b> Quality improvement scenarios: Modeling to learn how to meet or exceed BHS benchmarks for enrollment, case management, counseling & education, and access to care<br>(Thursday, 31-October-2019 from 2:30pm to 5:00pm)<br> 
 
-<b>Session 6.</b> BHS action plans: Designing and implementing model-informed strategies that impact infant and maternal mortality in our communities<br>(05-December-2019 from 2:30pm to 5:00pm)<br> 
+<b>Session 6.</b> BHS action plans: Designing and implementing model-informed strategies that impact infant and maternal mortality in our communities<br>(18-December-2019 from 2:30pm to 5:00pm)<br> 
 
 
